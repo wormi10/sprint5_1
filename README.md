@@ -214,7 +214,7 @@ Aumenta la tolerancia:
 goal_tolerance: 0.20  # Aumentar de 0.15 a 0.20
 ```
 
-## 📊 Logs y Monitoreo
+## Logs y Monitoreo
 
 El navegador muestra información útil:
 
