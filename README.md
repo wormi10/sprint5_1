@@ -2,17 +2,17 @@
 
 Sistema ROS2 para navegación autónoma de un robot hacia marcadores ArUco utilizando visión cenital.
 
-## 📋 Descripción
+##  Descripción
 
 El robot se mueve automáticamente hacia los marcadores ArUco 20, 21, 22 o 23, seleccionándolos de forma aleatoria. Una vez alcanzado un objetivo, selecciona otro y continúa indefinidamente.
 
-## 🔧 Componentes
+##  Componentes
 
 1. **subcriptor.py** - Monitor de tópicos que muestra el estado de todos los ArUcos
 2. **aruco_navigator.py** - Controlador de navegación autónoma
 3. **aruco_nav_params.yaml** - Parámetros de configuración
 
-## 📐 Calibración de la Cámara
+##  Calibración de la Cámara
 
 **¡MUY IMPORTANTE!** Antes de usar el sistema, debes calibrar la conversión de píxeles a metros:
 
@@ -51,7 +51,7 @@ aruco_navigator:
     real_world_height: 2.16
 ```
 
-## 🚀 Instalación
+##  Instalación
 
 ### 1. Copiar archivos al workspace
 
@@ -126,7 +126,7 @@ colcon build --packages-select tu_paquete
 source install/setup.bash
 ```
 
-## 🎮 Uso
+##  Uso
 
 ### Opción 1: Ejecución individual
 
@@ -146,7 +146,7 @@ ros2 run tu_paquete aruco_navigator --ros-args --params-file config/aruco_nav_pa
 ros2 launch tu_paquete aruco_navigation_launch.py
 ```
 
-## ⚙️ Configuración del Robot
+##  Configuración del Robot
 
 ### Identificar el ArUco del robot
 
@@ -162,7 +162,7 @@ Luego edita `aruco_navigator.py` línea 52:
 self.robot_aruco_id = 3  # Cambia a 8 si es necesario
 ```
 
-## 🎯 Parámetros Ajustables
+##  Parámetros Ajustables
 
 En `aruco_nav_params.yaml`:
 
@@ -176,7 +176,7 @@ En `aruco_nav_params.yaml`:
 - **angular_speed_max**: Velocidad de rotación máxima
   - Reducir si el robot gira demasiado rápido
 
-## 🐛 Solución de Problemas
+##  Solución de Problemas
 
 ### El robot no se mueve
 
@@ -219,12 +219,12 @@ goal_tolerance: 0.20  # Aumentar de 0.15 a 0.20
 El navegador muestra información útil:
 
 ```
-[INFO] [aruco_navigator]: 🎯 Nuevo objetivo seleccionado: ArUco 21
+[INFO] [aruco_navigator]:  Nuevo objetivo seleccionado: ArUco 21
 [INFO] [aruco_navigator]: Navegando a ArUco 21 | Distancia: 0.45m | Vel: lin=0.36 ang=0.12
-[INFO] [aruco_navigator]: ✅ Objetivo ArUco 21 alcanzado!
+[INFO] [aruco_navigator]:  Objetivo ArUco 21 alcanzado!
 ```
 
-## 🔄 Flujo del Programa
+##  Flujo del Programa
 
 1. **SELECTING_TARGET**: Selecciona aleatoriamente un ArUco (20-23)
 2. **NAVIGATING**: 
@@ -235,26 +235,3 @@ El navegador muestra información útil:
    - Detiene el robot
    - Espera 2 segundos
    - Vuelve a paso 1
-
-## 📝 Notas Importantes
-
-- La cámara debe ver todos los ArUcos simultáneamente
-- El robot (ArUco 3 u 8) debe estar siempre visible
-- Los valores AGE deben ser < 0.5s para navegación confiable
-- Ajusta las velocidades según tu robot específico
-- El sistema usa un controlador proporcional simple
-
-## 🔐 Seguridad
-
-- Mantén velocidades bajas durante pruebas iniciales
-- Ten un botón de emergencia listo
-- Supervisa la primera ejecución
-- Verifica que el área esté libre de obstáculos
-
-## 📞 Contacto y Ayuda
-
-Si tienes problemas:
-1. Verifica la calibración de cámara
-2. Confirma que todos los ArUcos son visibles
-3. Revisa los logs para mensajes de error
-4. Ajusta parámetros gradualmente
